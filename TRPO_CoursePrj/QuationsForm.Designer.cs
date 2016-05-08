@@ -34,8 +34,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuationsForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.responsabilityCheckBox = new System.Windows.Forms.CheckBox();
-            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseDataSet = new TRPO_CoursePrj.DatabaseDataSet();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.checkBox16 = new System.Windows.Forms.CheckBox();
             this.checkBox17 = new System.Windows.Forms.CheckBox();
@@ -72,16 +70,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.buttonEnter = new System.Windows.Forms.Button();
-            this.tableTableAdapter = new TRPO_CoursePrj.DatabaseDataSetTableAdapters.TableTableAdapter();
-            this.tableAdapterManager = new TRPO_CoursePrj.DatabaseDataSetTableAdapters.TableAdapterManager();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.databaseDataSet1 = new TRPO_CoursePrj.DatabaseDataSet();
+            this.tableAdapterManager1 = new TRPO_CoursePrj.DatabaseDataSetTableAdapters.TableAdapterManager();
+            this.tableTableAdapter1 = new TRPO_CoursePrj.DatabaseDataSetTableAdapters.TableTableAdapter();
+            this.databaseDataSet = new TRPO_CoursePrj.DatabaseDataSet();
+            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             blueprintLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // idLabel
@@ -137,7 +141,6 @@
             // 
             // responsabilityCheckBox
             // 
-            this.responsabilityCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.tableBindingSource, "Responsability", true));
             this.responsabilityCheckBox.Location = new System.Drawing.Point(10, 247);
             this.responsabilityCheckBox.Name = "responsabilityCheckBox";
             this.responsabilityCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -145,16 +148,6 @@
             this.responsabilityCheckBox.Text = "Да/Нет";
             this.responsabilityCheckBox.UseVisualStyleBackColor = true;
             this.responsabilityCheckBox.CheckedChanged += new System.EventHandler(this.responsabilityCheckBox_CheckedChanged);
-            // 
-            // tableBindingSource
-            // 
-            this.tableBindingSource.DataMember = "Table";
-            this.tableBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox7
             // 
@@ -222,6 +215,7 @@
             // idTextBox
             // 
             this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tableBindingSource, "Id", true));
+            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.tableBindingSource1, "Id", true));
             this.idTextBox.Location = new System.Drawing.Point(632, 9);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(104, 20);
@@ -316,7 +310,6 @@
             // 
             // fundTextBox
             // 
-            this.fundTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tableBindingSource, "Fund", true));
             this.fundTextBox.Enabled = false;
             this.fundTextBox.Location = new System.Drawing.Point(254, 15);
             this.fundTextBox.MaxLength = 4;
@@ -336,16 +329,17 @@
             // serviceCheckBox
             // 
             this.serviceCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.tableBindingSource, "Service", true));
+            this.serviceCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.tableBindingSource, "Service", true));
+            this.serviceCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckAlign", this.tableBindingSource, "Service", true));
             this.serviceCheckBox.Location = new System.Drawing.Point(10, 46);
             this.serviceCheckBox.Name = "serviceCheckBox";
-            this.serviceCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.serviceCheckBox.Size = new System.Drawing.Size(79, 24);
             this.serviceCheckBox.TabIndex = 16;
             this.serviceCheckBox.Text = "Да/Нет";
             this.serviceCheckBox.UseVisualStyleBackColor = true;
             // 
             // signCheckBox
             // 
-            this.signCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.tableBindingSource, "Sign", true));
             this.signCheckBox.Location = new System.Drawing.Point(10, 114);
             this.signCheckBox.Name = "signCheckBox";
             this.signCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -365,7 +359,6 @@
             // 
             // whatTextBox
             // 
-            this.whatTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tableBindingSource, "What", true));
             this.whatTextBox.Enabled = false;
             this.whatTextBox.Location = new System.Drawing.Point(134, 285);
             this.whatTextBox.Name = "whatTextBox";
@@ -383,7 +376,6 @@
             // 
             // expensesCheckBox
             // 
-            this.expensesCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.tableBindingSource, "Expenses", true));
             this.expensesCheckBox.Location = new System.Drawing.Point(10, 354);
             this.expensesCheckBox.Name = "expensesCheckBox";
             this.expensesCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -402,7 +394,6 @@
             // 
             // dependencyCheckBox
             // 
-            this.dependencyCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.tableBindingSource, "Dependency", true));
             this.dependencyCheckBox.Location = new System.Drawing.Point(10, 427);
             this.dependencyCheckBox.Name = "dependencyCheckBox";
             this.dependencyCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -413,7 +404,6 @@
             // 
             // depositTextBox
             // 
-            this.depositTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tableBindingSource, "Deposit", true));
             this.depositTextBox.Enabled = false;
             this.depositTextBox.Location = new System.Drawing.Point(77, 464);
             this.depositTextBox.MaxLength = 3;
@@ -435,7 +425,6 @@
             // 
             // blueprintTextBox
             // 
-            this.blueprintTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tableBindingSource, "Blueprint", true));
             this.blueprintTextBox.Location = new System.Drawing.Point(312, 581);
             this.blueprintTextBox.Name = "blueprintTextBox";
             this.blueprintTextBox.Size = new System.Drawing.Size(104, 20);
@@ -469,7 +458,6 @@
             // 
             // calculationCheckBox
             // 
-            this.calculationCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.tableBindingSource, "Calculation", true));
             this.calculationCheckBox.Location = new System.Drawing.Point(10, 706);
             this.calculationCheckBox.Name = "calculationCheckBox";
             this.calculationCheckBox.Size = new System.Drawing.Size(148, 24);
@@ -539,22 +527,52 @@
             this.buttonEnter.UseVisualStyleBackColor = true;
             this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
             // 
-            // tableTableAdapter
+            // button1
             // 
-            this.tableTableAdapter.ClearBeforeFill = true;
+            this.button1.Location = new System.Drawing.Point(444, 409);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // tableAdapterManager
+            // databaseDataSet1
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.TableTableAdapter = this.tableTableAdapter;
-            this.tableAdapterManager.UpdateOrder = TRPO_CoursePrj.DatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.databaseDataSet1.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.TableTableAdapter = this.tableTableAdapter1;
+            this.tableAdapterManager1.UpdateOrder = TRPO_CoursePrj.DatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // tableTableAdapter1
+            // 
+            this.tableTableAdapter1.ClearBeforeFill = true;
+            // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableBindingSource
+            // 
+            this.tableBindingSource.DataMember = "Table";
+            this.tableBindingSource.DataSource = this.databaseDataSet;
+            // 
+            // tableBindingSource1
+            // 
+            this.tableBindingSource1.DataMember = "Table";
+            this.tableBindingSource1.DataSource = this.databaseDataSet;
             // 
             // QuationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(789, 408);
+            this.ClientSize = new System.Drawing.Size(788, 455);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonEnter);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -565,12 +583,14 @@
             this.Load += new System.EventHandler(this.QuationsForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -604,10 +624,6 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton18;
-        private DatabaseDataSet databaseDataSet;
-        private System.Windows.Forms.BindingSource tableBindingSource;
-        private DatabaseDataSetTableAdapters.TableTableAdapter tableTableAdapter;
-        private DatabaseDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.CheckBox serviceCheckBox;
         private System.Windows.Forms.CheckBox signCheckBox;
@@ -619,6 +635,12 @@
         private System.Windows.Forms.CheckBox calculationCheckBox;
         private System.Windows.Forms.CheckBox responsabilityCheckBox;
         private System.Windows.Forms.TextBox depositTextBox;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button button1;
+        private DatabaseDataSet databaseDataSet1;
+        private DatabaseDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private DatabaseDataSetTableAdapters.TableTableAdapter tableTableAdapter1;
+        private DatabaseDataSet databaseDataSet;
+        private System.Windows.Forms.BindingSource tableBindingSource;
+        private System.Windows.Forms.BindingSource tableBindingSource1;
     }
 }

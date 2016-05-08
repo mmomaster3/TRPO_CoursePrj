@@ -45,10 +45,7 @@ namespace TRPO_CoursePrj
             {
                 string[] what = whatTextBox.Text.Split(' ');
                 int fund = 1;
-                int deposit = 2;
-
-
-                
+                int deposit = 2;              
 
                 MessageBox.Show("Success!");
 
@@ -71,14 +68,13 @@ namespace TRPO_CoursePrj
         }
         private void tableBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.tableBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.databaseDataSet);
 
         }
 
         private void QuationsForm_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "databaseDataSet.Table". При необходимости она может быть перемещена или удалена.
+            this.tableTableAdapter1.Fill(this.databaseDataSet.Table);
 
         }
 
@@ -95,6 +91,11 @@ namespace TRPO_CoursePrj
         private void responsabilityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             whatTextBox.Enabled = responsabilityCheckBox.Checked;
+        }
+
+        private void tableBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
